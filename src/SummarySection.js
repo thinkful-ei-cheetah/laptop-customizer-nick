@@ -20,10 +20,7 @@ export default function SummarySection(props) {
     <section className="main__summary">
       <h3>NEW GREENLEAF 2018</h3>
       {summary}
-      <div className="summary__total">
-        <div className="summary__total__label">Your Price: </div>
-        <Total selected={selected} />
-      </div>
+      <Total selected={selected} />
     </section>
   )
 }
