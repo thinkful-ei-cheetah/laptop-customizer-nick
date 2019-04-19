@@ -1,23 +1,18 @@
 import React from 'react'
+import ItemOption from './ItemOption'
 
 export default function FeatureItem(props) {
   const { features, selected, featureTitle, handleUpdate } = props;
   
-  const options = features[featureTitle].map((item, index) => {
-    const selectedClass = item.name === selected[featureTitle].name ? 'feature__selected' : '';
-    const featureClass = 'feature__option ' + selectedClass;
-    return (
-      <li key={index} className="feature__item">
-        <div className={featureClass}
-
-          onClick={() => handleUpdate(featureTitle, item)}>
-          {item.name}
-          ({new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-            .format(item.cost)})
-                  </div>
-      </li>
-    );
-  });
+  const options = features[featureTitle].map((item, index) =>
+    <ItemOption
+      key={index}
+      item={item}
+      selected={selected}
+      featureTitle={featureTitle}     
+      handleUpdate={handleUpdate}
+    />
+  );
 
   return (
     <div className="feature">
