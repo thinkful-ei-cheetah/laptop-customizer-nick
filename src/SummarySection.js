@@ -1,20 +1,17 @@
 import React from 'react'
+import Summary from './Summary'
 import Total from './Total'
 
 export default function SummarySection(props) {
   const { selected } = props;
 
   const summary = Object.keys(selected)
-    .map(key => <div className="summary__option" key={key}>
-      <div className="summary__option__label">{key}  </div>
-      <div className="summary__option__value">{selected[key].name}</div>
-      <div className="summary__option__cost">
-        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-          .format(selected[key].cost)}
-      </div>
-    </div>)
-
-   
+    .map(key =>
+      <Summary
+        key={key}
+        featureTitle={key}
+        selected={selected} /> 
+    );
 
   return (
     <section className="main__summary">
@@ -22,5 +19,5 @@ export default function SummarySection(props) {
       {summary}
       <Total selected={selected} />
     </section>
-  )
+  );
 }
